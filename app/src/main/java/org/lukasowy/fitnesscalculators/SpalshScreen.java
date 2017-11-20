@@ -17,15 +17,21 @@ public class SpalshScreen extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //Remove title
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_splesh_screen);
         logoText = (TextView) findViewById(R.id.logoText);
         logoImg = (ImageView) findViewById(R.id.logoImg);
+
+        //Animation
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.mytransition);
         logoText.startAnimation(anim);
         logoImg.startAnimation(anim);
+
         final Intent intent = new Intent(this, MainActivity.class);
         Thread timer = new Thread() {
             public void run() {
