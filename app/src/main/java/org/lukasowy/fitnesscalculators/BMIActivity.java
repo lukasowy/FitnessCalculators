@@ -1,14 +1,26 @@
 package org.lukasowy.fitnesscalculators;
 
 import android.graphics.Typeface;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BMIActivity extends AppCompatActivity {
 
-    TextView titleViewBMI;
+    TextView titleViewBMI, resultTextView;
     Typeface titleFont;
+    RadioGroup radioGroup;
+    RadioButton radioButton;
+    Button btnCalculate;
+    EditText inputHeight, inputWeight;
+
+    double inHeight, inWeight, ans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +30,46 @@ public class BMIActivity extends AppCompatActivity {
         titleViewBMI = (TextView) findViewById(R.id.titleViewBMI);
         titleFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
         titleViewBMI.setTypeface(titleFont);
+        resultTextView = (TextView) findViewById(R.id.resultTextView);
+        onClickListenerButton();
     }
+
+    public void onClickListenerButton() {
+        radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        btnCalculate = (Button) findViewById(R.id.btnCalculate);
+
+        btnCalculate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                radioButton = (RadioButton) findViewById(selectedId);
+                inputHeight = (EditText) findViewById(R.id.inputHeight);
+                inputWeight = (EditText) findViewById(R.id.inputWeight);
+
+
+                if (radioGroup.getCheckedRadioButtonId() != -1) {
+                    if (inputHeight.length() != 0 && inputWeight.length() != 0) {
+                        inHeight = Double.parseDouble(inputHeight.getText().toString());
+                        inWeight = Double.parseDouble(inputWeight.getText().toString());
+                        if (radioButton.getText().equals("Female")) {
+                            ans = (inHeight + inWeight) / 2;
+                            resultTextView.setText(Double.toString(ans));
+                        } else {
+                            ans = (inHeight + inWeight) * 2;
+                            resultTextView.setText(Double.toString(ans));
+                        }
+                    } else if (inputHeight.length() == 0 && inputWeight.length() > 0) {
+                        Toast.makeText(getBaseContext(), "Please, type Height.", Toast.LENGTH_SHORT).show();
+                    } else if (inputHeight.length() > 0 && inputWeight.length() == 0) {
+                        Toast.makeText(getBaseContext(), "Please, type Weight.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Please, type Weight and Height.", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(getBaseContext(), "Please, select sex.", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
 }

@@ -9,20 +9,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SpalshScreen">
+        <activity
+            android:name=".SpalshScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
-        <activity android:name=".BMIActivity" />
-        <activity android:name=".WaterActivity" />
-        <activity android:name=".MetabolicActivity" />
-        <activity android:name=".ProteinActivity" />
-        <activity android:name=".MaxHeartRateActivity" />
-        <activity android:name=".CreatineActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".BMIActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WaterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MetabolicActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProteinActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MaxHeartRateActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".CreatineActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
