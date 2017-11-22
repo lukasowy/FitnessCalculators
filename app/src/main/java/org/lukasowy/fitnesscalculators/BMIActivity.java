@@ -1,24 +1,28 @@
 package org.lukasowy.fitnesscalculators;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class BMIActivity extends AppCompatActivity {
 
-    TextView titleViewBMI, resultTextView;
-    Typeface titleFont;
+    TextView resultTextView;
+    Typeface textFont;
     RadioGroup radioGroup;
     RadioButton radioButton;
     Button btnCalculate;
     EditText inputHeight, inputWeight;
+    RelativeLayout allScreenBMI;
 
     double inHeight, inWeight, ans;
 
@@ -26,10 +30,12 @@ public class BMIActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
+        allScreenBMI = (RelativeLayout) findViewById(R.id.allScreenBMI);
 
-        titleViewBMI = (TextView) findViewById(R.id.titleViewBMI);
-        titleFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
-        titleViewBMI.setTypeface(titleFont);
+        //Set fonts for all activity
+        textFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
+        SetFontToAllChilds.setFontToAllChilds(allScreenBMI, textFont);
+
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         onClickListenerButton();
     }
@@ -46,6 +52,12 @@ public class BMIActivity extends AppCompatActivity {
                 inputHeight = (EditText) findViewById(R.id.inputHeight);
                 inputWeight = (EditText) findViewById(R.id.inputWeight);
 
+                //For Hide keyboard
+                InputMethodManager inputManager = (InputMethodManager)
+                        getSystemService(Context.INPUT_METHOD_SERVICE);
+
+                inputManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(),
+                        InputMethodManager.HIDE_NOT_ALWAYS);
 
                 if (radioGroup.getCheckedRadioButtonId() != -1) {
                     if (inputHeight.length() != 0 && inputWeight.length() != 0) {
@@ -71,5 +83,4 @@ public class BMIActivity extends AppCompatActivity {
             }
         });
     }
-
 }

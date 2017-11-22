@@ -6,10 +6,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Set fonts for all activity
         Typeface textFont = Typeface.createFromAsset(this.getAssets(), "LobsterTwo-Italic.otf");
-        setFontToAllChilds(allScreen, textFont);
+        SetFontToAllChilds.setFontToAllChilds(allScreen, textFont);
 
         //Set Event
         setSingleEvent(mainGrid);
@@ -58,16 +56,4 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //Set fonts for all activity
-    private void setFontToAllChilds(ViewGroup myMostParentLayout, Typeface tf) {
-        int childCount = myMostParentLayout.getChildCount();
-        for (int i = 0; i < childCount; ++i) {
-            View child = myMostParentLayout.getChildAt(i);
-
-            if (child instanceof ViewGroup)
-                setFontToAllChilds((ViewGroup) child, tf);
-            else if (child instanceof TextView)
-                ((TextView) child).setTypeface(tf);
-        }
-    }
 }
