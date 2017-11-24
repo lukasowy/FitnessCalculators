@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Created by Łukasz on 2017-11-22.
  */
 
-public class SetFontToAllChilds {
+public class GeneralMethods {
 
     //Set fonts for all activity
     public static void setFontToAllChilds(ViewGroup myMostParentLayout, Typeface tf) {

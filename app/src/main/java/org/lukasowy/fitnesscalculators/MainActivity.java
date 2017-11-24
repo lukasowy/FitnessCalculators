@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         //Set fonts for all activity
         Typeface textFont = Typeface.createFromAsset(this.getAssets(), "LobsterTwo-Italic.otf");
-        SetFontToAllChilds.setFontToAllChilds(allScreen, textFont);
+        GeneralMethods.setFontToAllChilds(allScreen, textFont);
 
         //Set Event
         setSingleEvent(mainGrid);

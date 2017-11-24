@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Fitness Calculators</string>
+    <string-array name="itemsSpActivity">
+        <item>Sedentary</item>
+        <item>Light Activity</item>
+        <item>Moderately Active</item>
+        <item>Very Active</item>
+        <item>Extremely Active</item>
+    </string-array>
+    <string-array name="itemsSpClimate">
+        <item>Tropical</item>
+        <item>Temperate</item>
+        <item>Cold</item>
+    </string-array>
 </resources>

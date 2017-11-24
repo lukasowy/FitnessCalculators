@@ -34,7 +34,7 @@ public class BMIActivity extends AppCompatActivity {
 
         //Set fonts for all activity
         textFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
-        SetFontToAllChilds.setFontToAllChilds(allScreenBMI, textFont);
+        GeneralMethods.setFontToAllChilds(allScreenBMI, textFont);
 
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         onClickListenerButton();
@@ -64,7 +64,7 @@ public class BMIActivity extends AppCompatActivity {
                         inHeight = Double.parseDouble(inputHeight.getText().toString());
                         inWeight = Double.parseDouble(inputWeight.getText().toString());
                         if (radioButton.getText().equals("Female")) {
-                            ans = (inHeight + inWeight) / 2;
+                            ans = calculateBMI(1,2,"sex") / 2;
                             resultTextView.setText(Double.toString(ans));
                         } else {
                             ans = (inHeight + inWeight) * 2;
@@ -82,5 +82,9 @@ public class BMIActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public double calculateBMI(double inWeight, double inHeight, String sex) {
+        return 1;
     }
 }
