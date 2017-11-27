@@ -6,13 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
-import android.widget.TextView;
 
 public class WaterActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
-    TextView titleViewWater;
-    Typeface titleFont;
 
+    Typeface textFont;
+    RelativeLayout allScreenWater;
     Spinner spinnerActivity, spinnerClimate;
 
 
@@ -21,17 +21,19 @@ public class WaterActivity extends AppCompatActivity implements AdapterView.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_water);
 
-        titleViewWater = (TextView) findViewById(R.id.titleViewWater);
-        titleFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
-        titleViewWater.setTypeface(titleFont);
+        //Set fonts for all activity
+        allScreenWater = (RelativeLayout) findViewById(R.id.allScreenWater);
+        textFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
+        GeneralMethods.setFontToAllChilds(allScreenWater, textFont);
 
-        spinnerActivity = (Spinner)findViewById(R.id.spinnerActivity);
-        spinnerClimate = (Spinner)findViewById(R.id.spinnerClimate);
+        //Find spinners
+        spinnerActivity = (Spinner) findViewById(R.id.spinnerActivity);
+        spinnerClimate = (Spinner) findViewById(R.id.spinnerClimate);
 
-        //set adapter to spinner
-        ArrayAdapter<CharSequence> adapterActivity = ArrayAdapter.createFromResource(this, R.array.itemsSpActivity, android.R.layout.simple_spinner_item);
+        //Set adapter to spinner
+        ArrayAdapter<CharSequence> adapterActivity = ArrayAdapter.createFromResource(this, R.array.itemsSpActivity, android.R.layout.simple_list_item_activated_1);
         spinnerActivity.setAdapter(adapterActivity);
-        ArrayAdapter<CharSequence> adapterClimate = ArrayAdapter.createFromResource(this, R.array.itemsSpClimate, android.R.layout.simple_spinner_item);
+        ArrayAdapter<CharSequence> adapterClimate = ArrayAdapter.createFromResource(this, R.array.itemsSpClimate, android.R.layout.simple_list_item_activated_1);
         spinnerClimate.setAdapter(adapterClimate);
     }
 
