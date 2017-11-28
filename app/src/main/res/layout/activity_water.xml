@@ -30,16 +30,16 @@
             android:text="..."
             android:textColor="@android:color/white"
             android:textSize="36sp"
-            android:layout_below="@+id/btnCalculate"
+            android:layout_below="@+id/waterCalculate"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="51dp" />
 
         <Button
-            android:id="@+id/btnCalculate"
+            android:id="@+id/waterCalculate"
             style="@style/Widget.AppCompat.Button"
             android:layout_width="155dp"
             android:layout_height="60dp"
-            android:background="@android:color/white"
+            android:background="@drawable/button_corners"
             android:elevation="4dp"
             android:shadowColor="@color/colorPrimaryDark"
             android:text="Result"
@@ -66,7 +66,7 @@
             android:textSize="24sp"
             android:layout_marginTop="60dp"
             android:layout_below="@+id/titleViewWater"
-            android:layout_toStartOf="@+id/btnCalculate" />
+            android:layout_toStartOf="@+id/waterCalculate" />
 
         <TextView
             android:id="@+id/textView8"
@@ -75,11 +75,11 @@
             android:text="kg"
             android:textColor="@android:color/white"
             android:textSize="24sp"
-            android:layout_alignBottom="@+id/editText"
+            android:layout_alignBottom="@+id/inputWeight"
             android:layout_alignEnd="@+id/titleViewWater" />
 
         <EditText
-            android:id="@+id/editText"
+            android:id="@+id/inputWeight"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:ems="10"
@@ -109,7 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="-5dp"
             android:layout_alignBottom="@+id/textViewWorkout"
-            android:layout_alignStart="@+id/editText"
+            android:layout_alignStart="@+id/inputWeight"
             android:background="@android:color/white" />
 
         <TextView
@@ -144,7 +144,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Why Is Drinking Water Important?"
-            android:textSize="24dp" />
+            android:textSize="24sp" />
 
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

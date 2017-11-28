@@ -30,9 +30,9 @@ public class BMIActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bmi);
-        allScreenBMI = (RelativeLayout) findViewById(R.id.allScreenBMI);
 
         //Set fonts for all activity
+        allScreenBMI = (RelativeLayout) findViewById(R.id.allScreenBMI);
         textFont = Typeface.createFromAsset(getAssets(), "LobsterTwo-Italic.otf");
         GeneralMethods.setFontToAllChilds(allScreenBMI, textFont);
 

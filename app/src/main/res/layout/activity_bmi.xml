@@ -114,7 +114,7 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="155dp"
             android:layout_height="60dp"
-            android:background="@android:color/white"
+            android:background="@drawable/button_corners"
             android:elevation="4dp"
             android:shadowColor="@color/colorPrimaryDark"
             android:text="Result"
