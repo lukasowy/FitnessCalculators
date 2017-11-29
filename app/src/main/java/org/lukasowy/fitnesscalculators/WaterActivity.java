@@ -24,7 +24,8 @@ public class WaterActivity extends AppCompatActivity {
     Button waterCalculate;
     EditText inputWeight;
 
-    int inWeight, posActivity, posClimate;
+    int posActivity;
+    double result, inWeight, posClimate;
     String itemActivity, itemClimate;
 
     @Override
@@ -69,9 +70,14 @@ public class WaterActivity extends AppCompatActivity {
     private void waterIntake() {
         if (inputWeight.length() != 0) {
             //Display result from input field
-            inWeight = Integer.parseInt(inputWeight.getText().toString());
-            
-            resultTextView.setText(String.valueOf(posActivity));
+            inWeight = Double.parseDouble(inputWeight.getText().toString());
+
+            //convert           kg to lbs                                             oz to l
+            result = ((((inWeight * 2.20462262) / 2) + (((posActivity * 30) / 30) * 12)) / 33.814) / posClimate;
+
+            String str = String.format("%1.2f", result);
+            result = Double.valueOf(str);
+            resultTextView.setText(String.valueOf(result));
         } else {
             Toast.makeText(getBaseContext(), "Please, type Weight.", Toast.LENGTH_SHORT).show();
         }
@@ -94,7 +100,7 @@ public class WaterActivity extends AppCompatActivity {
         spinnerActivity.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                itemActivity = (String) adapterView.getItemAtPosition(i);
+                itemActivity = adapterView.getItemAtPosition(i).toString();
                 posActivity = i;
             }
 
@@ -109,7 +115,13 @@ public class WaterActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 itemClimate = adapterView.getItemAtPosition(i).toString();
-                posClimate = i;
+                if (i == 0) {
+                    posClimate = 1;
+                } else if (i == 1) {
+                    posClimate = 1.12;
+                } else {
+                    posClimate = 1.06;
+                }
             }
 
             @Override
