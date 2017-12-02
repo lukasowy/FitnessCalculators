@@ -59,15 +59,15 @@ public class MaxHeartRateActivity extends AppCompatActivity {
                         InputMethodManager.HIDE_NOT_ALWAYS);
 
                 if (radioGroup.getCheckedRadioButtonId() != -1) {
-                    if (inputAge.length() != 0) {
-                        inAge = Integer.parseInt(inputAge.getText().toString());
+                    inAge = Integer.parseInt(inputAge.getText().toString());
+                    if (inputAge.length() != 0 && inAge<=120) {
                         if (radioButton.getText().equals("Female")) {
                             resultTextView.setText(Integer.toString(218 - inAge));
                         } else {
                             resultTextView.setText(Integer.toString(220 - inAge));
                         }
-                    } else if (inputAge.length() == 0 ) {
-                        Toast.makeText(getBaseContext(), "Please, type Age.", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(getBaseContext(), "Please, type correct Age.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getBaseContext(), "Please, select sex.", Toast.LENGTH_SHORT).show();
