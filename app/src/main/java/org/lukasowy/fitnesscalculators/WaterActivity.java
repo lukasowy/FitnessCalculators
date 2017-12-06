@@ -17,7 +17,7 @@ import android.widget.Toast;
 
 public class WaterActivity extends AppCompatActivity {
 
-    TextView resultTextView;
+      TextView resultTextView;
     Typeface textFont;
     RelativeLayout allScreenWater;
     Spinner spinnerActivity, spinnerClimate;
