@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
+    android:gravity="bottom"
     android:orientation="vertical"
     android:weightSum="10"
     app:umanoPanelHeight="60dp"
     app:umanoShadowHeight="20dp"
-    android:gravity="bottom"
     tools:context="org.lukasowy.fitnesscalculators.BMIActivity">
 
     <RelativeLayout
@@ -27,23 +27,23 @@
             android:id="@+id/resultTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="..."
-            android:textColor="@android:color/white"
-            android:textSize="36sp"
             android:layout_below="@+id/btnCalculate"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="51dp" />
+            android:layout_marginTop="51dp"
+            android:text="..."
+            android:textColor="@android:color/white"
+            android:textSize="36sp" />
 
         <RadioGroup
             android:id="@+id/radioGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="0dp"
-            android:orientation="horizontal"
-            android:weightSum="1"
-            android:layout_marginTop="70dp"
             android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/inputHeight">
+            android:layout_alignStart="@+id/inputHeight"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="70dp"
+            android:orientation="horizontal"
+            android:weightSum="1">
 
             <RadioButton
                 android:id="@+id/radioBtnMale"
@@ -65,37 +65,40 @@
                 android:layout_alignStart="@+id/inputWeight"
                 android:layout_below="@+id/radioGroup"
                 android:layout_marginStart="5dp"
+                android:layout_weight="0.42"
                 android:buttonTint="@color/colorWhite"
                 android:text="Female"
                 android:textColor="@android:color/white"
                 android:textColorLink="@color/colorWhite"
                 android:textSize="18sp"
                 tools:layout_editor_absoluteX="138dp"
-                tools:layout_editor_absoluteY="88dp"
-                android:layout_weight="0.42" />
+                tools:layout_editor_absoluteY="88dp" />
         </RadioGroup>
 
         <EditText
             android:id="@+id/inputHeight"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/inputWeight"
+            android:layout_below="@+id/radioGroup"
             android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/colorWhite"
             android:ems="10"
             android:inputType="number"
             android:maxLength="3"
             android:textColor="@color/colorWhite"
             android:textColorHighlight="@color/colorWhite"
-            android:textColorLink="@color/colorWhite"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/radioGroup"
-            android:layout_alignStart="@+id/inputWeight" />
+            android:textColorLink="@color/colorWhite" />
 
         <EditText
             android:id="@+id/inputWeight"
             android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/btnCalculate"
+            android:layout_below="@+id/inputHeight"
             android:layout_marginLeft="0dp"
+            android:layout_marginTop="20dp"
             android:backgroundTint="@color/colorWhite"
             android:ems="10"
             android:inputType="numberDecimal"
@@ -103,10 +106,7 @@
             android:shadowColor="@color/colorWhite"
             android:textColor="@color/colorWhite"
             android:textColorHighlight="@color/colorWhite"
-            android:textColorLink="@color/colorWhite"
-            android:layout_marginTop="20dp"
-            android:layout_below="@+id/inputHeight"
-            android:layout_alignStart="@+id/btnCalculate" />
+            android:textColorLink="@color/colorWhite" />
 
 
         <Button
@@ -114,12 +114,12 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="155dp"
             android:layout_height="60dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:background="@drawable/button_corners"
             android:elevation="4dp"
             android:shadowColor="@color/colorPrimaryDark"
-            android:text="Result"
-            android:layout_centerVertical="true"
-            android:layout_centerHorizontal="true" />
+            android:text="Result" />
 
         <TextView
             android:id="@+id/titleViewBMI"
@@ -158,22 +158,22 @@
             android:id="@+id/textView8"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="cm"
-            android:textColor="@android:color/white"
-            android:textSize="24sp"
             android:layout_alignBaseline="@+id/inputHeight"
             android:layout_alignBottom="@+id/inputHeight"
-            android:layout_toEndOf="@+id/btnCalculate" />
+            android:layout_toEndOf="@+id/btnCalculate"
+            android:text="cm"
+            android:textColor="@android:color/white"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView9"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignStart="@+id/textView8"
+            android:layout_alignTop="@+id/inputWeight"
             android:text="kg"
             android:textColor="@android:color/white"
-            android:textSize="24sp"
-            android:layout_alignTop="@+id/inputWeight"
-            android:layout_alignStart="@+id/textView8" />
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/textView10"
@@ -193,11 +193,24 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="What Is BMI?"
-            android:textSize="24dp" />
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="5dp"
+            android:text="What is BMI?"
+            android:textColor="@color/colorWhite"
+            android:textAlignment="textStart"
+            android:textSize="24sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:text="@string/longTextBMI"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="24sp" />
 
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

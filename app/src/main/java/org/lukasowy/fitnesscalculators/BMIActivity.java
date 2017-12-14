@@ -25,6 +25,18 @@ public class BMIActivity extends AppCompatActivity {
     RelativeLayout allScreenBMI;
 
     double inHeight, inWeight, ans;
+    String sex;
+    String longText = "FBMI is used as a screening tool to indicate whether a person is underweight," +
+            " overweight, obese or a healthy weight for their height.If a person\\'s " +
+            "BMI is out of the healthy BMI range, their health risks may increase significantly. " +
+            "BMI values are age-independent and the same for both sexes. However, BMI may not " +
+            "correspond to the same degree of fatness in different populations due to different " +
+            "body proportions. FBMI is used as a screening tool to indicate whether a person is underweight," +
+            " overweight, obese or a healthy weight for their height.If a person\\'s " +
+            "BMI is out of the healthy BMI range, their health risks may increase significantly. " +
+            "BMI values are age-independent and the same for both sexes. However, BMI may not " +
+            "correspond to the same degree of fatness in different populations due to different " +
+            "body proportions.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +50,7 @@ public class BMIActivity extends AppCompatActivity {
 
         resultTextView = (TextView) findViewById(R.id.resultTextView);
         onClickListenerButton();
+
     }
 
     public void onClickListenerButton() {
@@ -61,15 +74,16 @@ public class BMIActivity extends AppCompatActivity {
 
                 if (radioGroup.getCheckedRadioButtonId() != -1) {
                     if (inputHeight.length() != 0 && inputWeight.length() != 0) {
+
                         inHeight = Double.parseDouble(inputHeight.getText().toString());
                         inWeight = Double.parseDouble(inputWeight.getText().toString());
-                        if (radioButton.getText().equals("Female")) {
-                            ans = calculateBMI(1,2,"sex") / 2;
-                            resultTextView.setText(Double.toString(ans));
-                        } else {
-                            ans = (inHeight + inWeight) * 2;
-                            resultTextView.setText(Double.toString(ans));
-                        }
+
+                        sex = (String) radioButton.getText();
+
+                        ans = calculateBMI(inWeight, inHeight, sex);
+                        BMICategorization(ans);
+                        resultTextView.setText(Double.toString(ans));
+
                     } else if (inputHeight.length() == 0 && inputWeight.length() > 0) {
                         Toast.makeText(getBaseContext(), "Please, type Height.", Toast.LENGTH_SHORT).show();
                     } else if (inputHeight.length() > 0 && inputWeight.length() == 0) {
@@ -81,10 +95,36 @@ public class BMIActivity extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Please, select sex.", Toast.LENGTH_SHORT).show();
                 }
             }
+
+            private void BMICategorization(double ans) {
+                if (isBetween(ans, 0, 15))
+                    Toast.makeText(getBaseContext(), "Very severely underweight", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 15, 16))
+                    Toast.makeText(getBaseContext(), "Severely underweight", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 16, 18.5))
+                    Toast.makeText(getBaseContext(), "Underweight", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 18.5, 25))
+                    Toast.makeText(getBaseContext(), "Normal (healthy weight)", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 25, 30))
+                    Toast.makeText(getBaseContext(), "Overweight", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 30, 35))
+                    Toast.makeText(getBaseContext(), "Moderately obese", Toast.LENGTH_SHORT).show();
+                else if (isBetween(ans, 35, 40))
+                    Toast.makeText(getBaseContext(), "Severely obese", Toast.LENGTH_SHORT).show();
+                else
+                    Toast.makeText(getBaseContext(), "Very severely obese", Toast.LENGTH_SHORT).show();
+            }
         });
     }
 
     public double calculateBMI(double inWeight, double inHeight, String sex) {
-        return 1;
+        double result;
+        // BMI for both sex is the same
+        result = inWeight / ((inHeight / 100) * (inHeight / 100));
+        return GeneralMethods.round(result, 2);
+    }
+
+    private boolean isBetween(double x, double lower, double upper) {
+        return lower < x && x <= upper;
     }
 }

@@ -20,4 +20,9 @@
         <item>Maintenance</item>
         <item>Muscle Gains</item>
     </string-array>
+    <string name="longTextBMI">FBMI is used as a screening tool to indicate whether a person is
+        underweight, overweight, obese or a healthy weight for their height. \n\n If a person\'s
+        BMI is out of the healthy BMI range, their health risks may increase significantly.\n\n
+        BMI values are age-independent and the same for both sexes. However, BMI may not correspond
+        to the same degree of fatness in different populations due to different body proportions.</string>
 </resources>
