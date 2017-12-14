@@ -143,8 +143,19 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorWhite"
             android:text="Why Is Drinking Water Important?"
             android:textSize="24sp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:text="@string/longTextWater"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="20sp" />
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>

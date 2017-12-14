@@ -218,8 +218,19 @@
             android:layout_centerHorizontal="true"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorWhite"
             android:text="Why Is Eating Protein Important?"
             android:textSize="24dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="55dp"
+            android:text="@string/longTextProtein"
+            android:textAlignment="center"
+            android:textColor="@color/colorWhite"
+            android:textSize="18sp" />
     </RelativeLayout>
 </com.sothree.slidinguppanel.SlidingUpPanelLayout>
