@@ -26,17 +26,6 @@ public class BMIActivity extends AppCompatActivity {
 
     double inHeight, inWeight, ans;
     String sex;
-    String longText = "FBMI is used as a screening tool to indicate whether a person is underweight," +
-            " overweight, obese or a healthy weight for their height.If a person\\'s " +
-            "BMI is out of the healthy BMI range, their health risks may increase significantly. " +
-            "BMI values are age-independent and the same for both sexes. However, BMI may not " +
-            "correspond to the same degree of fatness in different populations due to different " +
-            "body proportions. FBMI is used as a screening tool to indicate whether a person is underweight," +
-            " overweight, obese or a healthy weight for their height.If a person\\'s " +
-            "BMI is out of the healthy BMI range, their health risks may increase significantly. " +
-            "BMI values are age-independent and the same for both sexes. However, BMI may not " +
-            "correspond to the same degree of fatness in different populations due to different " +
-            "body proportions.";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
