@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "org.lukasowy.fitnesscalculators"
         minSdkVersion 21
@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     compile 'com.ms-square:expandableTextView:0.1.4'
     testCompile 'junit:junit:4.12'
+    testCompile group: 'pl.pragmatists', name: 'JUnitParams', version: '0.3.6'
 }

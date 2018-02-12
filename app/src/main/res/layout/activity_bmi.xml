@@ -171,7 +171,7 @@
             android:layout_height="wrap_content"
             android:layout_alignStart="@+id/textView8"
             android:layout_alignTop="@+id/inputWeight"
-            android:text="kg"
+            android:text="@string/kg"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/radioGroup"
             android:layout_alignStart="@+id/textView6"
-            android:text="Sex:"
+            android:text="@string/sex"
             android:textColor="@android:color/white"
             android:textSize="24sp" />
 
@@ -197,7 +197,7 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="5dp"
-            android:text="What is BMI?"
+            android:text="@string/what_is_bmi"
             android:textColor="@color/colorWhite"
             android:textAlignment="textStart"
             android:textSize="24sp" />

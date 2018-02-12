@@ -14,6 +14,9 @@ import java.math.RoundingMode;
 
 public class GeneralMethods {
 
+
+    Typeface textFont;
+
     //Set fonts for all activity
     public static void setFontToAllChilds(ViewGroup myMostParentLayout, Typeface tf) {
         int childCount = myMostParentLayout.getChildCount();
@@ -35,4 +38,5 @@ public class GeneralMethods {
         bd = bd.setScale(places, RoundingMode.HALF_UP);
         return bd.doubleValue();
     }
+
 }

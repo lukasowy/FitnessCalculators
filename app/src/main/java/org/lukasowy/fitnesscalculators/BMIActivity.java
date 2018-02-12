@@ -67,9 +67,7 @@ public class BMIActivity extends AppCompatActivity {
                         inHeight = Double.parseDouble(inputHeight.getText().toString());
                         inWeight = Double.parseDouble(inputWeight.getText().toString());
 
-                        sex = (String) radioButton.getText();
-
-                        ans = calculateBMI(inWeight, inHeight, sex);
+                        ans = calculateBMI(inWeight, inHeight);
                         BMICategorization(ans);
                         resultTextView.setText(Double.toString(ans));
 
@@ -106,7 +104,7 @@ public class BMIActivity extends AppCompatActivity {
         });
     }
 
-    public double calculateBMI(double inWeight, double inHeight, String sex) {
+    public double calculateBMI(double inWeight, double inHeight) {
         double result;
         // BMI for both sex is the same
         result = inWeight / ((inHeight / 100) * (inHeight / 100));
