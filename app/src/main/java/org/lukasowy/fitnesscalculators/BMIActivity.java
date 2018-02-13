@@ -24,8 +24,7 @@ public class BMIActivity extends AppCompatActivity {
     EditText inputHeight, inputWeight;
     RelativeLayout allScreenBMI;
 
-    double inHeight, inWeight, ans;
-    String sex;
+    double inHeight, inWeight, result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,48 +66,54 @@ public class BMIActivity extends AppCompatActivity {
                         inHeight = Double.parseDouble(inputHeight.getText().toString());
                         inWeight = Double.parseDouble(inputWeight.getText().toString());
 
-                        ans = calculateBMI(inWeight, inHeight);
-                        BMICategorization(ans);
-                        resultTextView.setText(Double.toString(ans));
+                        result = calculateBMI(inWeight, inHeight);
+                        String message = BMICategorization(result);
+                        Toast.makeText(getBaseContext(), message, Toast.LENGTH_SHORT).show();
+                        resultTextView.setText(Double.toString(result));
 
-                    } else if (inputHeight.length() == 0 && inputWeight.length() > 0) {
+                    }
+                    if (inputHeight.length() == 0) {
                         Toast.makeText(getBaseContext(), "Please, type Height.", Toast.LENGTH_SHORT).show();
-                    } else if (inputHeight.length() > 0 && inputWeight.length() == 0) {
+                    }
+                    if (inputWeight.length() == 0) {
                         Toast.makeText(getBaseContext(), "Please, type Weight.", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getBaseContext(), "Please, type Weight and Height.", Toast.LENGTH_SHORT).show();
                     }
                 } else {
                     Toast.makeText(getBaseContext(), "Please, select sex.", Toast.LENGTH_SHORT).show();
                 }
             }
 
-            private void BMICategorization(double ans) {
-                if (isBetween(ans, 0, 15))
-                    Toast.makeText(getBaseContext(), "Very severely underweight", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 15, 16))
-                    Toast.makeText(getBaseContext(), "Severely underweight", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 16, 18.5))
-                    Toast.makeText(getBaseContext(), "Underweight", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 18.5, 25))
-                    Toast.makeText(getBaseContext(), "Normal (healthy weight)", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 25, 30))
-                    Toast.makeText(getBaseContext(), "Overweight", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 30, 35))
-                    Toast.makeText(getBaseContext(), "Moderately obese", Toast.LENGTH_SHORT).show();
-                else if (isBetween(ans, 35, 40))
-                    Toast.makeText(getBaseContext(), "Severely obese", Toast.LENGTH_SHORT).show();
-                else
-                    Toast.makeText(getBaseContext(), "Very severely obese", Toast.LENGTH_SHORT).show();
-            }
+
         });
     }
 
     public double calculateBMI(double inWeight, double inHeight) {
-        double result;
-        // BMI for both sex is the same
-        result = inWeight / ((inHeight / 100) * (inHeight / 100));
-        return GeneralMethods.round(result, 2);
+        if (inHeight == 0 || inWeight == 0) {
+            return 0;
+        }
+        return GeneralMethods.round(inWeight / ((inHeight / 100) * (inHeight / 100)), 2);
+    }
+
+    public String BMICategorization(double ans) {
+        if (isBetween(ans, 0, 15)) {
+            return "Very severely underweight";
+        } else if (isBetween(ans, 15, 16)) {
+            return "Severely underweight";
+        } else if (isBetween(ans, 16, 18.5)) {
+            return "Underweight";
+        } else if (isBetween(ans, 18.5, 25)) {
+            return "Normal (healthy weight)";
+        } else if (isBetween(ans, 25, 30)) {
+            return "Overweight";
+        } else if (isBetween(ans, 30, 35)) {
+            return "Moderately obese";
+        } else if (isBetween(ans, 35, 40)) {
+            return "Severely obese";
+        } else if (isBetween(ans, 40, 55)) {
+            return "Very severely obese";
+        } else {
+            return "Please, check the correctness of the input data";
+        }
     }
 
     private boolean isBetween(double x, double lower, double upper) {

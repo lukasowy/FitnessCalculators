@@ -56,7 +56,7 @@ public class MetabolicActivity extends AppCompatActivity {
                 inputHeight = (EditText) findViewById(R.id.inputHeight);
                 inputWeight = (EditText) findViewById(R.id.inputWeight);
                 inputAge = (EditText) findViewById(R.id.inputAge);
-                sex = radioButton.getText().toString();
+                sex = null;
 
                 //For Hide keyboard
                 InputMethodManager inputManager = (InputMethodManager)
@@ -72,6 +72,7 @@ public class MetabolicActivity extends AppCompatActivity {
                         inHeight = Double.parseDouble(inputHeight.getText().toString());
                         inWeight = Double.parseDouble(inputWeight.getText().toString());
                         inAge = Integer.parseInt(inputAge.getText().toString());
+                        sex = radioButton.getText().toString();
 
                         bmr = calculateBMR(inWeight, inHeight, inAge);
                         result = calculateBMRbaseOnSex(sex, bmr);
