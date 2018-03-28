@@ -21,6 +21,7 @@ public class BMIActivityTest {
 
     @Before
     public void before() {
+
         bmiActivity = new BMIActivity();
     }
 
